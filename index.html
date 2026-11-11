@@ -1,1 +1,448 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d50">
+<meta name="description" content="Tanzania Learning Hub - Learn, practise and succeed.">
+<title>Tanzania Learning Hub</title>
+
+<style>
+:root {
+  --navy:#102d50;
+  --blue:#1769aa;
+  --light:#f3f7fc;
+  --green:#15966b;
+  --text:#25364a;
+  --muted:#718096;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--light);
+  color:var(--text);
+}
+header {
+  background:var(--navy);
+  color:white;
+  padding:17px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.brand {font-size:19px;font-weight:bold}
+.brand span {color:#63d5ad}
+nav button {
+  background:transparent;color:white;
+  border:1px solid #ffffff66;
+  padding:9px 12px;border-radius:7px;
+}
+button {cursor:pointer;font-weight:600}
+.hero {
+  background:linear-gradient(130deg,#102d50,#1769aa);
+  color:white;padding:65px 7%;
+  text-align:center;
+}
+.hero h1 {font-size:34px;margin:0 0 15px}
+.hero p {line-height:1.7;max-width:650px;margin:0 auto 24px;color:#e4efff}
+.primary {
+  background:var(--green);color:white;
+  border:0;padding:13px 20px;border-radius:8px;
+}
+.secondary {
+  background:white;color:var(--navy);
+  border:0;padding:13px 20px;border-radius:8px;
+}
+.container {max-width:1050px;margin:auto;padding:30px 18px}
+.section-title {text-align:center;margin:10px 0 25px}
+.grid {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:17px;
+}
+.card {
+  background:white;padding:22px;border-radius:12px;
+  box-shadow:0 3px 15px #1736530c;
+}
+.card h3 {color:var(--navy);margin-top:0}
+.card p {color:var(--muted);line-height:1.6}
+.icon {font-size:30px}
+.auth {
+  max-width:430px;margin:35px auto;
+  background:white;padding:25px;border-radius:13px;
+  box-shadow:0 4px 20px #102d5012;
+}
+input {
+  display:block;width:100%;padding:13px;
+  border:1px solid #d6deea;border-radius:7px;
+  margin:9px 0 16px;font-size:15px;
+}
+label {font-size:14px;font-weight:600}
+.auth button.full {width:100%;padding:13px}
+.link {
+  color:var(--blue);cursor:pointer;
+  border:0;background:none;padding:8px;
+}
+.message {
+  padding:12px;border-radius:7px;
+  margin:12px 0;font-size:14px;
+  overflow-wrap:anywhere;
+}
+.error {background:#fff0f0;color:#a32626}
+.success {background:#e7f8ef;color:#12633f}
+.hidden {display:none!important}
+.dashboard-head {
+  background:var(--navy);color:white;
+  border-radius:12px;padding:23px;margin-bottom:20px;
+}
+.item {
+  border-bottom:1px solid #e6ebf1;
+  padding:13px 0;
+}
+.item:last-child {border:0}
+.item small {color:var(--muted)}
+footer {
+  background:var(--navy);color:#dbe7f5;
+  text-align:center;padding:25px;margin-top:30px;
+  font-size:13px;
+}
+@media(max-width:480px) {
+  .hero {padding:45px 20px}
+  .hero h1 {font-size:27px}
+  header {padding:14px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">TANZANIA <span>LEARNING HUB</span></div>
+  <nav>
+    <button id="homeBtn">Home</button>
+    <button id="loginBtn">Login</button>
+  </nav>
+</header>
+
+<main id="homePage">
+  <section class="hero">
+    <h1>Learn Today. Lead Tomorrow.</h1>
+    <p>
+      Welcome to Tanzania Learning Hub.
+      Access secondary school learning materials,
+      practise examinations and improve your academic performance.
+    </p>
+    <button class="primary" id="registerBtn">Join as a Student</button>
+    <button class="secondary" id="heroLoginBtn">Student Login</button>
+  </section>
+
+  <section class="container">
+    <h2 class="section-title">Explore Our Platform</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Learning Materials</h3>
+        <p>Access notes, topics, revision materials and educational resources.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>Online Examinations</h3>
+        <p>Practise quizzes and examinations and monitor your progress.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎓</div>
+        <h3>Student Accounts</h3>
+        <p>Create your account and access your learning dashboard.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Academic Progress</h3>
+        <p>Work towards better academic performance through practice.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section id="authPage" class="hidden">
+  <div class="auth">
+    <h2 id="authTitle">Student Login</h2>
+    <p id="authDescription">Sign in to access your learning dashboard.</p>
+
+    <div id="message"></div>
+
+    <form id="authForm">
+      <div id="nameField" class="hidden">
+        <label for="fullName">Full name</label>
+        <input id="fullName" type="text" autocomplete="name"
+          placeholder="Enter your full name">
+      </div>
+
+      <label for="email">Email address</label>
+      <input id="email" type="email" required
+        autocomplete="email" placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" required
+        minlength="8" autocomplete="current-password"
+        placeholder="At least 8 characters">
+
+      <button class="primary full" id="submitBtn" type="submit">
+        Login
+      </button>
+    </form>
+
+    <p id="switchText">Don't have an account?
+      <button class="link" id="switchBtn">Register here</button>
+    </p>
+    <button class="link" id="backBtn">← Back to homepage</button>
+  </div>
+</section>
+
+<section id="dashboard" class="container hidden">
+  <div class="dashboard-head">
+    <h2 id="welcome">Welcome!</h2>
+    <p id="accountRole"></p>
+    <button class="secondary" id="logoutBtn">Logout</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>My Subjects</h3>
+      <div id="subjectsList">Loading subjects...</div>
+    </div>
+
+    <div class="card">
+      <div class="icon">📖</div>
+      <h3>Learning Materials</h3>
+      <div id="materialsList">Loading materials...</div>
+    </div>
+
+    <div class="card">
+      <div class="icon">📝</div>
+      <h3>Examinations</h3>
+      <div id="examsList">Loading examinations...</div>
+    </div>
+  </div>
+
+  <div id="adminNotice" class="card hidden" style="margin-top:20px">
+    <h3>Administrator Area</h3>
+    <p>You are logged in as the platform administrator.</p>
+    <p>Content management and student management tools will be added in the next development stage.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Tanzania Learning Hub</p>
+  <p>Empowering Tanzanian Students Through Education.</p>
+</footer>
+
+<script type="module">
+import { createClient } from
+'https://esm.sh/@supabase/supabase-js@2';
+
+/* ENTER YOUR OWN SUPABASE DETAILS BELOW */
+const SUPABASE_URL = 'PASTE_YOUR_PROJECT_URL_HERE';
+const SUPABASE_KEY = 'PASTE_YOUR_PUBLISHABLE_KEY_HERE';
+
+const configured =
+  SUPABASE_URL.startsWith('https://') &&
+  !SUPABASE_URL.includes('PASTE_') &&
+  SUPABASE_KEY.startsWith('sb_publishable_') &&
+  !SUPABASE_KEY.includes('PASTE_');
+
+const db = configured
+  ? createClient(SUPABASE_URL, SUPABASE_KEY)
+  : null;
+
+const $ = id => document.getElementById(id);
+
+let mode = 'login';
+let busy = false;
+
+function showMessage(text, type='error') {
+  $('message').innerHTML = '';
+  const div = document.createElement('div');
+  div.className = 'message ' + type;
+  div.textContent = text;
+  $('message').appendChild(div);
+}
+
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;',
+    '"':'&quot;', "'":'&#39;'
+  })[char]);
+}
+
+function showPage(page) {
+  $('homePage').classList.toggle('hidden',page!=='home');
+  $('authPage').classList.toggle('hidden',page!=='auth');
+  $('dashboard').classList.toggle('hidden',page!=='dashboard');
+  window.scrollTo(0,0);
+}
+
+function setMode(value) {
+  mode=value;
+  $('authTitle').textContent =
+    mode==='login' ? 'Account Login' : 'Student Registration';
+  $('authDescription').textContent =
+    mode==='login'
+    ? 'Sign in to access your learning dashboard.'
+    : 'Create your free student account.';
+  $('nameField').classList.toggle('hidden',mode==='login');
+  $('fullName').required=mode==='register';
+  $('submitBtn').textContent =
+    mode==='login' ? 'Login' : 'Create Account';
+  $('switchText').firstChild.textContent =
+    mode==='login' ? "Don't have an account? " : 'Already registered? ';
+  $('switchBtn').textContent =
+    mode==='login' ? 'Register here' : 'Login here';
+  $('message').innerHTML='';
+  $('password').autocomplete =
+    mode==='login' ? 'current-password' : 'new-password';
+  showPage('auth');
+}
+
+$('homeBtn').onclick=()=>showPage('home');
+$('loginBtn').onclick=()=>setMode('login');
+$('heroLoginBtn').onclick=()=>setMode('login');
+$('registerBtn').onclick=()=>setMode('register');
+$('backBtn').onclick=()=>showPage('home');
+$('switchBtn').onclick=()=>setMode(mode==='login'?'register':'login');
+
+async function loadDashboard(user) {
+  const {data:profile,error} = await db
+    .from('profiles')
+    .select('full_name,role')
+    .eq('id',user.id)
+    .single();
+
+  if(error || !profile) {
+    showMessage('Your profile could not be loaded. Please contact the administrator.');
+    showPage('auth');
+    return;
+  }
+
+  $('welcome').textContent='Welcome, '+profile.full_name;
+  $('accountRole').textContent='Account type: '+profile.role;
+  $('adminNotice').classList.toggle('hidden',profile.role!=='admin');
+
+  showPage('dashboard');
+  await loadContent();
+}
+
+async function loadContent() {
+  const {data:subjects,error:sError}=await db
+    .from('subjects').select('name,level').order('name');
+
+  $('subjectsList').innerHTML=sError
+    ? 'Unable to load subjects.'
+    : subjects.length
+      ? subjects.map(s=>`<div class="item"><b>${escapeHTML(s.name)}</b><br><small>${escapeHTML(s.level)}</small></div>`).join('')
+      : 'No subjects available yet.';
+
+  const {data:materials,error:mError}=await db
+    .from('materials')
+    .select('title,description,file_url,level,form_level')
+    .eq('is_published',true)
+    .order('created_at',{ascending:false});
+
+  $('materialsList').innerHTML=mError
+    ? 'Unable to load materials.'
+    : materials.length
+      ? materials.map(m=>{
+          const safeUrl=validUrl(m.file_url);
+          return `<div class="item"><b>${escapeHTML(m.title)}</b><br><small>${escapeHTML(m.level)} · Form ${escapeHTML(m.form_level)}</small>${m.description?`<p>${escapeHTML(m.description)}</p>`:''}${safeUrl?`<a href="${escapeHTML(safeUrl)}" target="_blank" rel="noopener">Open material</a>`:''}</div>`;
+        }).join('')
+      : 'No published materials yet.';
+
+  const {data:exams,error:eError}=await db
+    .from('exams')
+    .select('title,description,level,form_level,duration_minutes')
+    .eq('is_published',true)
+    .order('created_at',{ascending:false});
+
+  $('examsList').innerHTML=eError
+    ? 'Unable to load examinations.'
+    : exams.length
+      ? exams.map(e=>`<div class="item"><b>${escapeHTML(e.title)}</b><br><small>${escapeHTML(e.level)} · Form ${escapeHTML(e.form_level)} · ${escapeHTML(e.duration_minutes)} minutes</small></div>`).join('')
+      : 'No published examinations yet.';
+}
+
+function validUrl(value) {
+  try {
+    const url=new URL(value);
+    return ['https:'].includes(url.protocol) ? url.href : null;
+  } catch { return null; }
+}
+
+$('authForm').onsubmit=async event=>{
+  event.preventDefault();
+  if(busy) return;
+  if(!db) {
+    showMessage('Website connection is not configured. Please check the Supabase settings.');
+    return;
+  }
+
+  busy=true;
+  $('submitBtn').disabled=true;
+
+  const email=$('email').value.trim();
+  const password=$('password').value;
+  const fullName=$('fullName').value.trim();
+
+  try {
+    if(mode==='register') {
+      if(!fullName) throw new Error('Please enter your full name.');
+
+      const {data,error}=await db.auth.signUp({
+        email,password,
+        options:{data:{full_name:fullName}}
+      });
+
+      if(error) throw error;
+
+      if(data.session) {
+        showMessage('Registration successful! Welcome to Tanzania Learning Hub.','success');
+        await loadDashboard(data.user);
+      } else {
+        showMessage('Registration received. Check your email for the confirmation link, then log in.','success');
+      }
+    } else {
+      const {data,error}=await db.auth.signInWithPassword({
+        email,password
+      });
+
+      if(error) throw error;
+      await loadDashboard(data.user);
+    }
+  } catch(error) {
+    showMessage(error.message || 'Something went wrong.');
+  } finally {
+    busy=false;
+    $('submitBtn').disabled=false;
+  }
+};
+
+$('logoutBtn').onclick=async()=>{
+  await db.auth.signOut();
+  showPage('home');
+};
+
+async function start() {
+  if(!db) {
+    console.warn('Supabase connection details are not configured.');
+    return;
+  }
+  const {data:{session}}=await db.auth.getSession();
+  if(session) await loadDashboard(session.user);
+}
+
+start();
+</script>
+</body>
+</html>
+
